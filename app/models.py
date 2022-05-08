@@ -2,8 +2,13 @@ from django.conf import settings
 from django.db import models
 class App(models.Model):
     'Generated Model'
-    name = models.TextField()
     description = models.TextField()
-    owner = models.ForeignKey("users.User",on_delete=models.CASCADE,null=True,blank=True,related_name="app_owner",)
+    owner = models.ForeignKey("users.User",null=True,blank=True,on_delete=models.CASCADE,related_name="app_owner",)
+    name = models.CharField(max_length=256,null=True,blank=True,)
+    plan = models.ForeignKey("app.Plan",on_delete=models.CASCADE,null=True,blank=True,related_name="app_plan",)
+class Plan(models.Model):
+    'Generated Model'
+    name = models.CharField(max_length=256,)
+    price = models.IntegerField(null=True,blank=True,)
 
 # Create your models here.
