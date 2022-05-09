@@ -4,8 +4,7 @@ class App(models.Model):
     'Generated Model'
     description = models.TextField()
     owner = models.ForeignKey("users.User",null=True,blank=True,on_delete=models.CASCADE,related_name="app_owner",)
-    name = models.CharField(max_length=256,null=True,blank=True,)
-    plan = models.ForeignKey("app.Plan",on_delete=models.CASCADE,null=True,blank=True,related_name="app_plan",)
+    name = models.CharField(null=True,blank=True,max_length=256,)
 class Plan(models.Model):
     'Generated Model'
     name = models.CharField(max_length=256,)
